@@ -1,0 +1,10 @@
+{
+	"name": "Banner", 
+	"class": "fa fa-2x fa-file-image-o",
+	"description": "Banner for all page bottom, all page top, course page sidebar, profile page sidebar.",
+	"dependencies": "",
+	"module_id": "774",
+	"module_hash": "9327034cfd7de0548ab65eed042d3ed2",
+	"display_order": "24"
+}
+

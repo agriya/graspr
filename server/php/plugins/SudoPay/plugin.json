@@ -1,0 +1,9 @@
+{
+	"name": "SudoPay", 
+	"class": "fa fa-2x icon-sudopay-icon pull-left",
+	"description": "By enabling this plugin, site can give more payment gateway option to users to pay their payments.",
+	"dependencies": "PaymentGateways",
+	"module_id": "772",
+	"module_hash": "f035856cf59fed3180b56fc18db63202",
+	"display_order": "14"
+}

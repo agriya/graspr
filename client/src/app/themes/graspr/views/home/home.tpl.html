@@ -1,0 +1,64 @@
+<main id="main">
+    <!--Banner section start-->
+	<section id="banner-carousel">
+		<!-- Wrapper for slides -->
+		<carousel interval="myInterval" class="slide" no-wrap="noWrapSlides">
+			<slide active="active">
+				<img src="assets/img/slide1.png" alt="[Image: {{'Image1'|translate}}]"  class="img-responsive center-block">				
+			</slide>
+			<slide>
+				<img src="assets/img/slide2.png" alt="[Image: {{'Image1'|translate}}]"  class="img-responsive center-block">				
+			</slide>
+			<div class="well-sm"></div>
+			<div class="carousel-caption">
+				<div class="well-sm clearfix"></div>
+				<h2 class="h1 navbar-btn text-center">{{'Take the world\'s best courses, online.'|translate}}</h2>
+				<div class="clearfix well-lg">
+					<form class="form-inline" method="post">
+						<div class="input-group col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0">
+							<input type="text" class="form-control input-lg" placeholder="{{'What would you like to learn about?'|translate}}"  ng-model="hsearchVal" ng-keyup="$event.keyCode == 13 ? goToState('CourseSearch', {q: hsearchVal}) : null" />
+							<div class="input-group-btn"> <a ui-sref="CourseSearch({q:hsearchVal})" class="btn btn-default input-lg btn-lg"><i class="fa fa-search text-primary"></i></a> </div>
+						</div>
+						<!-- /input-group -->
+					</form>
+					<div class="clearfix well-sm">
+						<h4 class="list-group-item-text list-group-item-heading text-center lead"> {{'or'|translate}} <a href="#!/courses" title="{{'browse catalog'|translate}}">
+						<span class="text-primary">{{'browse catalog'|translate}}  <i class="fa fa-angle-right"></i></span></a></h4>
+						<div class="well-lg hidden-sm hidden-xs"></div>
+					</div>
+						<div class="clearfix well-sm h3">
+							<ul class="list-inline small">
+								<li>16,527,829 {{'learners'|translate}}</li>
+								<li><span class="h3">.</span></li>
+								<li>1,508 {{'courses'|translate}}</li>
+								<li><span class="h3">.</span></li>
+								<li>140 {{'partners'|translate}}</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+		</carousel>		
+    </section>
+    <!--Banner section End-->
+    <!--home-main section Start-->
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="well-sm clearfix"></div>
+          <div class="clearfix">
+            <h2 class="text-center h3 list-group">{{'Most Popular'|translate}}</h2>
+            <home-course filter="most_popular" limit="8"></home-course>
+          </div>
+          <div class="clearfix">
+            <h2 class="text-center h3 list-group">{{'Learner Recommended'|translate}}</h2>
+          </div>
+		  
+		   <home-course filter="learner_recommended" limit="8"></home-course>
+          <div class="navbar-btn col-xs-12"><a href="#!/courses" title="{{'View all courses'|translate}}" class="btn btn-lg btn-default btn-block"><span class="text-info h5">{{'View all courses'|translate}}</span></a></div>
+        </div>
+        <hr class="navbar-btn">
+      </div>
+    </section>
+    <!--home-main section End-->
+	<div banner position="topBanner" ng-if="$root.settings['site.enabled_plugins'].indexOf('Banner') > -1"></div>
+</main>

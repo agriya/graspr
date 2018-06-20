@@ -1,0 +1,9 @@
+{
+	"name": "Subscriptions", 
+	"class": "fa fa-2x fa-cart-arrow-down",
+	"description": "By enabling this plugin, users can subscribe and access the courses as per the course level access of their subscribed plan.",
+	"dependencies": "",
+	"module_id": "770",
+	"module_hash": "9e21bd65b595a39ec76fb959fc513d92",
+	"display_order": "12"
+}

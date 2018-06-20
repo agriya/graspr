@@ -1,0 +1,69 @@
+<!--footer section start-->
+<footer id="footer" class="footer">
+    <div class="container">
+	<div class="well-lg hidden-xs"></div>
+      <div class="row">
+        <div class="col-md-5 col-xs-12 navbar-btn">
+          <ul class="list-unstyled">
+            <li><a href="#!/" title="{{$root.settings['site.name']}}"><img src="assets/img/logo.png" alt="[Image: {{$root.settings['site.name']}}]" title="{{$root.settings['site.name']}}" class="img-responsive"/></a></li>
+            <li>
+              <p class="navbar-btn">{{$root.settings['site.name']}} {{'provides universal access to the world\'s best education, partnering with top universities and organizations to offer courses for anyone to take, for free.'|translate}}</p>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-7 navbar-btn">
+          <ul class="list-unstyled col-sm-3 col-xs-6">
+            <li>
+              <h6 class="h5 initialism">{{'Company'|translate}}</h6>
+            </li>
+            <li class="navbar-btn"><a class="text-muted" title="{{'About'|translate}}" href="#!/page/about">{{'About'|translate}}</a></li>
+            <li class="navbar-btn"><a class="text-muted" title="{{'People'|translate}}" href="#!/page/people">{{'People'|translate}}</a></li>
+            <li class="navbar-btn"><a class="text-muted" title="{{'Leadership'|translate}}" href="#!/page/leadership">{{'Leadership'|translate}}</a></li>
+            <li class="navbar-btn"><a class="text-muted" title="{{'Careers'|translate}}" href="#!/page/careers">{{'Careers'|translate}}</a></li>
+          </ul>
+          <ul class="list-unstyled col-sm-3 col-xs-6">
+            <li>
+              <h6 class="h5 initialism">{{'Friends'|translate}}</h6>
+            </li>
+            <li class="navbar-btn"><a class="text-muted" title="{{'Partners'|translate}}" href="#!/page/partners">{{'Partners'|translate}}</a></li>
+            <li class="navbar-btn"><a class="text-muted" title="{{'Community'|translate}}" href="#!/page/community">{{'Community'|translate}}</a></li>
+            <li class="navbar-btn"><a class="text-muted" title="{{'Programs'|translate}}" href="#!/page/programs">{{'Programs'|translate}}</a></li>
+            <li class="navbar-btn"><a class="text-muted" title="{{'Developers'|translate}}" href="#!/page/developers">{{'Developers'|translate}}</a></li>
+            
+          </ul>
+          <ul class="list-unstyled col-sm-3 col-xs-6">
+            <li>
+              <h6 class="h5 initialism">{{'Connect'|translate}}</h6>
+            </li>
+			<li ng-show="$root.settings['social_networks.facebook']" class="navbar-btn"><a href="{{$root.settings['social_networks.facebook']}}" target="_blank" class="text-muted">{{'Facebook'|translate}}</a></li>
+			<li ng-show="$root.settings['social_networks.twitter']" class="navbar-btn"><a href="{{$root.settings['social_networks.twitter']}}" target="_blank" class="text-muted">{{'Twitter'|translate}}</a></li>
+			<li  ng-show="$root.settings['social_networks.google_plus']" class="navbar-btn"><a href="{{$root.settings['social_networks.google_plus']}}" target="_blank" class="text-muted">{{'Google plus'|translate}}</a></li>
+			<li ng-show="$root.settings['social_networks.linkedin']" class="navbar-btn"><a href="{{$root.settings['social_networks.linkedin']}}" target="_blank" class="text-muted">{{'Linkedin'|translate}}</a></li>
+			<li ng-show="$root.settings['social_networks.foursquare']" class="navbar-btn"><a href="{{$root.settings['social_networks.foursquare']}}" target="_blank" class="text-muted">{{'Foursquare'|translate}}</a></li>
+			<li ng-show="$root.settings['social_networks.pinterest']" class="navbar-btn"><a href="{{$root.settings['social_networks.pinterest']}}" target="_blank" class="text-muted">{{'Pinterest'|translate}}</a></li>
+			<li ng-show="$root.settings['social_networks.flickr']" class="navbar-btn"><a href="{{$root.settings['social_networks.flickr']}}" target="_blank" class="text-muted">{{'Flickr'|translate}}</a></li>
+			<li ng-show="$root.settings['social_networks.instagram']" class="navbar-btn"><a href="{{$root.settings['social_networks.instagram']}}" target="_blank" class="text-muted">{{'Instagram'|translate}}</a></li>
+			<li ng-show="$root.settings['social_networks.tumblr']" class="navbar-btn"><a href="{{$root.settings['social_networks.tumblr']}}" target="_blank" class="text-muted">{{'Tumblr'|translate}}</a></li>
+			<li ng-show="$root.settings['social_networks.youtube']" class="navbar-btn"><a href="{{$root.settings['social_networks.youtube']}}" target="_blank" class="text-muted">{{'Youtube'|translate}}</a></li>
+			<li ng-show="$root.settings['social_networks.vimeo']" class="navbar-btn"><a href="{{$root.settings['social_networks.vimeo']}}" target="_blank" class="text-muted">{{'Vimeo'|translate}}</a></li>
+          </ul>
+          <ul class="list-unstyled col-sm-3 col-xs-6">
+            <li>
+              <h6 class="h5 initialism">{{'More'|translate}}</h6>
+            </li>
+            <li class="navbar-btn"><a href="#!/page/terms" title="{{'Terms'|translate}}" class="text-muted">{{'Terms'|translate}}</a></li>
+            <li class="navbar-btn"><a href="#!/page/privacy-policy" title="{{'Privacy'|translate}}" class="text-muted">{{'Privacy Policy'|translate}}</a></li>
+            <li class="navbar-btn"><a href="#!/page/help" title="{{'Help'|translate}}" class="text-muted">{{'Help'|translate}}</a></li>
+            <li class="navbar-btn"><a href="#!/page/press" title="{{'Press'|translate}}" class="text-muted">{{'Press'|translate}}</a></li>
+            <li class="navbar-btn"><a href="#!/contactus" title="{{'Contact'|translate}}" class="text-muted">{{'Contact'|translate}}</a></li>
+			<li class="navbar-btn" ng-if="$root.settings['site.enabled_plugins'].indexOf('Translations') > -1">{{'Translate'|translate}}</li>
+			<li oc-lazy-load="$root.loadTranslations" ng-if="$root.settings['site.enabled_plugins'].indexOf('Translations') > -1"><div ng-translate-language-select></div></li>
+          </ul>
+        </div>
+		<div class="col-xs-12">
+			<p class="navbar-btn">© {{cdate | date:'yyyy'}} <a href="#!" title="{{$root.settings['site.name']}}" class="text-muted">{{$root.settings['site.name']}}</a>, {{'All rights reserved.'| translate}} <a href="http://graspr.demo.agriya.com/" target="_blank" title="{{'Powered by Graspr'| translate}}"><img src="assets/img/graspr.png" alt="[Image: {{'Powered by Graspr'| translate}}]" title="{{'Powered by Graspr'| translate}}"></a> ,{{' v'|translate}}{{$root.settings['site.version']}} {{'made in '|translate}}&nbsp;<a href="http://www.agriya.com/" target="_blank" title="{{'Agriya Web Development'| translate}}"><img src="assets/img/powered-by-agriya.png" alt="[Image: {{'Agriya Web Development'| translate}}]" title="{{'Agriya Web Development'| translate}}"></a>  <a href="http://www.cssilize.com/" target="_blank" title="{{'CSSilized by CSSilize, PSD to XHTML Conversion'| translate}}"> <img src="assets/img/cssilize.png" alt="[Image: {{'CSSilized by CSSilize, PSD to XHTML Conversion'| translate}}]" title="{{'CSSilized by CSSilize, PSD to XHTML Conversion'| translate}}" > </a></p>
+		</div>
+      </div>
+    </div>
+</footer>
+<!--footer section end-->	

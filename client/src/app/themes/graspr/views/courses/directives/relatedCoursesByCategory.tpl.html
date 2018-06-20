@@ -1,0 +1,21 @@
+<div ng-if="model.related_courses_by_category_length > 0">
+<h3 class="text-left list-group-item-heading col-xs-12">{{'Related Courses'|translate}}</h3>
+  <ul class="clearfix list-unstyled course-listing">
+	<li class="col-sm-4 col-xs-12 navbar-btn" ng-repeat="relatedCoursesByCategory in model.relatedCoursesByCategory.data">
+	  <div class="clearfix panel sidebarPanel"> 
+		  <!-- course image when is_from_mooc_affiliate false -->
+		<a ng-if="relatedCoursesByCategory.image_hash && relatedCoursesByCategory.is_from_mooc_affiliate !== 1" href="#!/course/{{relatedCoursesByCategory.id}}/{{relatedCoursesByCategory.slug}}">
+			<span class="course_thumb_img"><img animate-visible="{{ImgLazyLoad.AnimateVisible}}" animate-speed="{{ImgLazyLoad.AnimateSpeed}}" lazy-src="{{$root.site_url}}img/large_medium_thumb/Course/{{relatedCoursesByCategory.image_hash}}" alt="[Image: {{relatedCoursesByCategory.title}}]" title="{{relatedCoursesByCategory.title}}" /></span> </a>
+		<a ng-if="!relatedCoursesByCategory.image_hash && relatedCoursesByCategory.is_from_mooc_affiliate !== 1" href="#!/course/{{relatedCoursesByCategory.id}}/{{relatedCoursesByCategory.slug}}">
+		     <span class="course_thumb_img"><img animate-visible="{{ImgLazyLoad.AnimateVisible}}" animate-speed="{{ImgLazyLoad.AnimateSpeed}}" lazy-src="{{$root.site_url}}img/large_medium_thumb/Course/0.default.jpg" alt="[Image: {{relatedCoursesByCategory.title}}]" title="{{relatedCoursesByCategory.title}}" /></span> </a>
+		<!-- course image when is_from_mooc_affiliate true -->
+		<a ng-if="relatedCoursesByCategory.course_image && relatedCoursesByCategory.is_from_mooc_affiliate === 1" href="#!/course/{{relatedCoursesByCategory.id}}/{{relatedCoursesByCategory.slug}}">
+		     <span class="mooc_thumb_img moc_sidebar_img"><img animate-visible="{{ImgLazyLoad.AnimateVisible}}" animate-speed="{{ImgLazyLoad.AnimateSpeed}}" lazy-src="{{relatedCoursesByCategory.course_image}}" alt="[Image: {{relatedCoursesByCategory.title}}]" title="{{relatedCoursesByCategory.title}}" /></span> </a>
+	    <a ng-if="!relatedCoursesByCategory.course_image && relatedCoursesByCategory.is_from_mooc_affiliate === 1" href="#!/course/{{relatedCoursesByCategory.id}}/{{relatedCoursesByCategory.slug}}">
+		     <span class="course_thumb_img"><img animate-visible="{{ImgLazyLoad.AnimateVisible}}" animate-speed="{{ImgLazyLoad.AnimateSpeed}}" lazy-src="{{$root.site_url}}img/large_medium_thumb/Course/0.default.jpg" alt="[Image: {{relatedCoursesByCategory.title}}]" title="{{relatedCoursesByCategory.title}}"/></span> </a>
+		
+		<p class="navbar-btn col-xs-12"> <a href="#!/course/{{relatedCoursesByCategory.id}}/{{relatedCoursesByCategory.slug}}" title="{{relatedCoursesByCategory.title}}">{{relatedCoursesByCategory.title}}</a></p>
+	  </div>
+	</li>
+  </ul>
+</div>

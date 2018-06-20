@@ -1,0 +1,65 @@
+<header id="header" class="clearfix navbar-default">
+	<div class="clearfix">
+		<!-- If user not logged in -->
+		<div class="container" ng-show="!isAuth">
+			<div class="navbar-header navbar-btn list-group-item-text">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+				<h1 class="navbar-btn clearfix list-group-item-heading"><a href="#!/" title="{{$root.settings['site.name']}}"><img src="assets/img/logo.png" alt="[Image: {{$root.settings['site.name']}}]" title="{{$root.settings['site.name']}}" class="img-responsive"/></a></h1>
+			</div>
+			<nav class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li ng-show="$root.settings['site.enabled_plugins'].indexOf('Instructor') > -1"><a href="#!users/login" title="{{'Become an Instructor'|translate}}" class="text-muted navbar-btn">{{'Become an Instructor'|translate}}</a></li>
+					<li><a ng-href="#!/users/login"  ng-click="modalLogin($event)" title="{{'Log In'|translate}}" class="text-muted navbar-btn">{{'Log In'|translate}}</a></li>
+					<li ng-if="$root.settings['site.enabled_plugins'].indexOf('Subscriptions') === -1"><a ng-href="#!/users/signup" ng-click="modalSignup($event)" title="{{'Sign Up'|translate}}" class="text-muted navbar-btn">{{'Sign Up'|translate}}</a></li>
+					<li ng-if="$root.settings['site.enabled_plugins'].indexOf('Subscriptions') > -1"><a href="#!/subscribe/plans"  title="{{'Pricing'|translate}}" class="text-muted navbar-btn">{{'Pricing'|translate}}</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div class="container" ng-show="isAuth">
+			<div class="navbar-header navbar-btn list-group-item-heading">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+				<h1 class="navbar-btn clearfix list-group-item-heading list-group-item-text"><a href="#!/courses/search" title="{{$root.settings['site.name']}}"><img src="assets/img/logo.png" alt="[Image: {{$root.settings['site.name']}}]" title="{{$root.settings['site.name']}}" class="img-responsive navbar-btn"/></a></h1>
+			</div>
+			<nav class="collapse navbar-collapse">
+				<div class="clearfix navbar-btn col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-2">
+					<form class="form-inline navbar-btn" method="post">
+						<div class="input-group"> 
+							<span class="input-group-btn">
+								<a class="btn btn-default" title="{{'Catalog'|translate}}" href="#!/courses"><span class="text-muted"><i class="fa fa-list-ul"></i> {{'Catalog'|translate}}</span></a>
+							</span>
+							<input type="search" class="form-control" placeholder="{{'Search Courses'|translate}}" ng-model="hsearchVal" ng-keyup="$event.keyCode == 13 ? goToState('CourseSearch', {q: hsearchVal}) : null" />
+							<span class="input-group-btn">
+								<a class="btn btn-default" ui-sref="CourseSearch({q:hsearchVal})"><i class="fa fa-search"></i></a>
+							</span> 
+						</div>
+					</form>
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li ng-show="$root.auth.providertype === 'admin'"><a href="ag-admin" title="{{'Admin Dashboard'|translate}}" class="text-muted navbar-btn">{{'Admin Dashboard'|translate}}</a></li>
+					<li ng-show="model.userDetails.is_teacher === 1 && $root.settings['site.enabled_plugins'].indexOf('Instructor') > -1 && $root.auth.providertype !== 'admin'"><a href="#!/my-courses/teaching" title="{{'Instructor Dashboard'|translate}}" class="text-muted navbar-btn">{{'Instructor Dashboard'|translate}}</a></li>
+					<li ng-show="model.userDetails.is_teacher !== 1 && $root.settings['site.enabled_plugins'].indexOf('Instructor') > -1 && $root.auth.providertype !== 'admin'"><a href="#!/courses/add" title="{{'Become an Instructor'|translate}}" class="text-muted navbar-btn">{{'Become an Instructor'|translate}}</a></li>					
+					<li class="dropdown dropdown-img navbar-btn">
+						<a ng-if="$root.auth.user_image_hash !== '' && $root.auth.user_image_hash !== null" href="" class="btn-sm dropdown-toggle user-img" data-toggle="dropdown"> 
+							<img  ng-src="{{$root.site_url}}img/small_thumb/User/{{$root.auth.user_image_hash}}" alt="[Image: {{$root.auth.displayname}}]" title="{{$root.auth.displayname}}" class="img-circle"/>
+							<span class="caret"></span>
+						</a>
+						<a ng-if="$root.auth.user_image_hash === '' || $root.auth.user_image_hash === null" href="" class="btn-sm dropdown-toggle user-img" data-toggle="dropdown"> 
+							<img  ng-src="{{$root.site_url}}img/small_thumb/User/0.default.jpg" alt="[Image: {{$root.auth.displayname}}]" title="{{$root.auth.displayname}}" class="img-circle" />
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#!/my-courses/learning" title="{{'My Courses'|translate}}" class="text-muted">{{'My Courses'|translate}}</a></li>
+							<li ng-if="$root.settings['site.enabled_plugins'].indexOf('UserProfile') > -1"><a href="#!/user/{{user_id}}/{{$root.auth.displayname|slugify}}/" title="{{'Profile'|translate}}" class="text-muted">{{'Profile'|translate}}</a></li>
+							<li><a href="#!/users/edit-profile" title="{{'Edit Profile'|translate}}" class="text-muted">{{'Edit Profile'|translate}}</a></li>
+							<li><a href="#!/users/change_password" title="{{'Change Password'|translate}}" class="text-muted">{{'Change Password'|translate}}</a></li>
+							<li ng-if="$root.settings['site.enabled_plugins'].indexOf('Subscriptions') > -1" ><a href="#!/me/subscriptions" title="{{'My Subscriptions'|translate}}" class="text-muted">{{'My Subscriptions'|translate}}</a></li>
+							<li ng-if="$root.settings['site.enabled_plugins'].indexOf('CourseCheckout') > -1"><a href="#!/transactions" title="{{'My Transactions'| translate}}" >{{'My Transactions'| translate}}</a></li>
+							<li ng-if="$root.settings['site.enabled_plugins'].indexOf('Withdrawal') > -1"><a href="#!/user_cash_withdrawals" title="{{'Withdraw Fund Requests'| translate}}">{{'Withdraw Fund Requests'| translate}}</a></li>
+							<li ng-if='!contentInIframe'><a href="#!/users/logout" title="{{'Sign Out'|translate}}" class="text-muted">{{'Sign Out'|translate}}</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>

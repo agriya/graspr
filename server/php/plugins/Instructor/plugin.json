@@ -1,0 +1,9 @@
+{
+	"name": "Instructor", 
+	"class": "fa fa-2x fa-graduation-cap",
+	"description": "By enabling this plugin, site users can act as instructor, that is site will allow to users to post their courses and allowed to earn.",
+	"dependencies": "",
+	"module_id": "731",
+	"module_hash": "c52295d9dea145c1f847b39e797e0fc5",
+	"display_order": "15"
+}

@@ -1,0 +1,32 @@
+<h3 ng-if="model.OnlineCourse.data.length">{{'Course Syllabus'|translate}}</h3>
+<ul class="list-group clearfix  navbar-btn">
+			<li ng-repeat="OnlineCourse in model.OnlineCourse.data" class="list-group-item learn-page-lesson-list clearfix ng-scope">
+				<div  ng-if="OnlineCourse.is_chapter == 1" class="col-xs-12"><strong>{{'Chapter'|translate}} : {{OnlineCourse.lesson_name}}</strong></div>
+				<div  class="col-xs-8" ng-if="OnlineCourse.is_chapter == 0">
+					<a  class="text-muted" ><i class="fa fa-download" ng-if='OnlineCourse.online_lesson_type_id === 5'></i>
+					<i class="fa fa-file-video-o" ng-if='OnlineCourse.online_lesson_type_id === 4'> </i>
+					<i class="fa fa-play-circle-o"  ng-if='OnlineCourse.online_lesson_type_id === 3'></i>
+					<i class="fa fa-edit"  ng-if='OnlineCourse.online_lesson_type_id === 1'></i>
+					<i class="fa fa-file"  ng-if='OnlineCourse.online_lesson_type_id === 2'></i>
+					<i class="fa fa-edit"  ng-if='OnlineCourse.online_lesson_type_id === 6'></i>
+					<i class="fa fa-edit"  ng-if='!OnlineCourse.online_lesson_type_id'></i></a>
+					&nbsp;&nbsp; <a  class="text-muted" href="#" ng-click="showDetail(OnlineCourse, $event)">
+					{{'Lesson'|translate}}: &nbsp;{{OnlineCourse.lesson_name}}
+						<i class="fa fa-caret-down" ng-hide="active == OnlineCourse.id" ng-if='OnlineCourse.lesson_description'></i>
+						<i class="fa fa-caret-up" ng-show="active==OnlineCourse.id"></i>
+					</a>
+					
+				</div>
+							
+				<div class="col-xs-4 "ng-if="OnlineCourse.is_chapter == 0">
+					<div  ng-if='OnlineCourse.is_preview === 1' class="pull-left">
+						<a href="#!/{{OnlineCourse.course_slug}}/learn/{{OnlineCourse.course_id}}?lesson={{OnlineCourse.id}}" title="{{'Preview'|translate}}" class="btn btn-sm btn-primary">{{'Preview'|translate}}</a> 						
+					</div>
+					<span ng-bind="getDuration(OnlineCourse.duration + '', $event)" class="pull-right" ng-if="OnlineCourse.duration"></span>
+				</div>
+				<div class="clearfix"></div>	
+				<div ng-show="active==OnlineCourse.id"  class="panel-body" >
+						<span>{{OnlineCourse.lesson_description}}</span>
+				</div>
+			</li>
+	</ul>

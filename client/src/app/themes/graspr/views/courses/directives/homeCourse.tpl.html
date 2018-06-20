@@ -1,0 +1,18 @@
+<ul class="clearfix list-unstyled course-listing">
+   <li class="col-md-3 col-sm-4 col-xs-12" ng-repeat="homeCourse in model.homeCourse.data">
+		<div class="clearfix panel homePanelHeight"> 
+			<!-- course image when is_from_mooc_affiliate false -->
+			<a ng-if="homeCourse.image_hash && homeCourse.is_from_mooc_affiliate !== 1" href="#!/course/{{homeCourse.id}}/{{homeCourse.slug}}" title="{{homeCourse.title}}"><span class="course_thumb_img"> <img animate-visible="{{ImgLazyLoad.AnimateVisible}}" animate-speed="{{ImgLazyLoad.AnimateSpeed}}" lazy-src="{{$root.site_url}}img/medium_thumb/Course/{{homeCourse.image_hash}}" alt="[Image: {{homeCourse.title}}]" title="{{homeCourse.title}}"  /></span></a>
+			<a ng-if="!homeCourse.image_hash && homeCourse.is_from_mooc_affiliate !== 1" href="#!/course/{{homeCourse.id}}/{{homeCourse.slug}}" title="{{homeCourse.title}}"><span class="course_thumb_img"> <img animate-visible="{{ImgLazyLoad.AnimateVisible}}" animate-speed="{{ImgLazyLoad.AnimateSpeed}}" lazy-src="{{$root.site_url}}img/medium_thumb/Course/0.default.jpg" alt="[Image: {{homeCourse.title}}]" title="{{homeCourse.title}}" /></span></a>
+			
+			<!-- course image when is_from_mooc_affiliate true -->
+			<a ng-if="homeCourse.course_image && homeCourse.is_from_mooc_affiliate === 1" href="#!/course/{{homeCourse.id}}/{{homeCourse.slug}}" title="{{homeCourse.title}}"><span class="mooc_thumb_img mooc_home_img"> <img animate-visible="{{ImgLazyLoad.AnimateVisible}}" animate-speed="{{ImgLazyLoad.AnimateSpeed}}" lazy-src="{{homeCourse.course_image}}" alt="[Image: {{homeCourse.title}}]" title="{{homeCourse.title}}" class="img-responsive" /></span></a>
+			<a ng-if="!homeCourse.course_image && homeCourse.is_from_mooc_affiliate === 1" href="#!/course/{{homeCourse.id}}/{{homeCourse.slug}}" title="{{homeCourse.title}}"><span class="course_thumb_img"> <img animate-visible="{{ImgLazyLoad.AnimateVisible}}" animate-speed="{{ImgLazyLoad.AnimateSpeed}}" lazy-src="{{$root.site_url}}img/medium_thumb/Course/0.default.jpg" alt="[Image: {{homeCourse.title}}]" title="{{homeCourse.title}}" /></span></a>
+		 
+		 <div class="clearfix col-xs-12">
+			<h4 class="list-group-item-text htruncate-m3"><a href="#!/course/{{homeCourse.id}}/{{homeCourse.slug}}" title="{{homeCourse.title}}">{{homeCourse.title}}</a></h4>
+			<p> <profile-name user-display-name='homeCourse.displayname' user-profile-id='homeCourse.user_id' ng-if="homeCourse && $root.settings['site.enabled_plugins'].indexOf('Instructor') > -1" ></profile-name></p>
+		  </div>
+		</div>
+	</li>
+</ul>

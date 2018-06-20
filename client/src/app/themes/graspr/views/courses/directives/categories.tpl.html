@@ -1,0 +1,6 @@
+ <ul class="nav nav-pills nav-stacked list-group list-group-item-text" role="tablist">
+	<li role="presentation" class="list-group-item well-sm" ng-repeat="parentCategory in model.common.parentCategories.data">
+		<a href="#!/courses/category/{{parentCategory.id}}/{{parentCategory.sub_category_name|slugify}}" title="{{parentCategory.sub_category_name}}" role="tab">{{parentCategory.sub_category_name}}
+		</a>
+	</li>
+</ul>
